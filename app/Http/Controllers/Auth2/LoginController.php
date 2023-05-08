@@ -24,7 +24,7 @@ class LoginController extends Controller
                 return redirect()->intended('/adm/users');
             return redirect()->intended('/');
         }
-        return back()->withErrors('Incorrect email or password');
+        return back()->withErrors('Incorrect password');
     }
     public function logout(){
         Auth::logout();

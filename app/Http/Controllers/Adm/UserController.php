@@ -14,6 +14,7 @@ class UserController extends Controller
             $users = User::where('name', 'LIKE', '%' . $request->search . '%')->
             orWhere('email', 'LIKE', '%' . $request->search . '%')
                 ->with('role')->get();
+
         }else{
             $users = User::with('role')->get();
         }

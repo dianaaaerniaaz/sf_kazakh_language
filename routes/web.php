@@ -5,6 +5,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\Auth2\RegisterController;
 use App\Http\Controllers\Auth2\LoginController;
 use App\Http\Controllers\Adm\UserController;
+use App\Http\Controllers\GameController;
 
 
 Route::get('/posts/category/{category}',[PostController::class,'postByCategory'])->name('posts.category');
@@ -12,6 +13,19 @@ Route::get('/posts/category/{category}',[PostController::class,'postByCategory']
 Route::get('/',function (){
     return redirect()->route('posts.index');
 });
+Route::get('/authorize', function () {
+    $eds = new \Unetway\LaravelEdsign\LaravelEdsign();
+    $result = $eds->authorize([
+        'document' => 'path/to/document.pdf',
+        'callback_url' => 'https://yourapp.com/callback',
+        'user_id' => '123',
+        'user_email' => 'user@example.com',
+    ]);
+    return redirect($result['url']);
+});
+Route::get('/game', [GameController::class, 'index'])->name('game.index');
+Route::post('/game/guess', [GameController::class, 'guess'])->name('game.guess');
+Route::post('/game/guess-word', [GameController::class, 'guessWord'])->name('game.guess-word');
 Route::prefix('adm')->as('adm.')->middleware('hasRole:admin')->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::get('/users/search', [UserController::class, 'index'])->name('users.search');

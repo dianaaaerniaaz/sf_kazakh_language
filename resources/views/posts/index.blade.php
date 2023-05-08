@@ -1,11 +1,54 @@
 @extends('layouts.app')
-<link rel="stylesheet" href="app.css">
+{{--<link rel="stylesheet" href="app.css">--}}
 
 @section('title','Home Page')
 
 @section('content')
 
-
+    <div class="slider_area">
+        <div class="slider_active owl-carousel">
+            <!-- single_carouse -->
+            <div class="single_slider  d-flex align-items-center slider_bg_1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="slider_text "><h3>“Өзге тілдің бәрін біл,  <br>
+                                    өз тіліңді құрметте!”<br></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/ single_carouse -->
+            <!-- single_carouse -->
+            <div class="single_slider  d-flex align-items-center slider_bg_2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="slider_text "><h3>“Өзге тілдің бәрін біл,  <br>
+                                    өз тіліңді құрметте!”<br></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/ single_carouse -->
+            <!-- single_carouse -->
+            <div class="single_slider  d-flex align-items-center slider_bg_1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="slider_text ">
+                                <h3>“Өзге тілдің бәрін біл,  <br>
+                                    өз тіліңді құрметте!”<br></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/ single_carouse -->
+        </div>
+    </div>
 
     <div class="container">
         <div class="row justify-content-center">
