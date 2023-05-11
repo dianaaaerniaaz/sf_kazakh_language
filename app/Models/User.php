@@ -54,4 +54,8 @@ class User extends Authenticatable
             ->withPivot('like')
             ->withTimestamps();
     }
+    public function tests()
+    {
+        return $this->hasMany(Test::class);
+    }
 }

@@ -1,0 +1,8 @@
+.pagination a {
+    font-size: 14px; /* adjust this value as needed */
+    padding: 0.25rem 0.5rem;
+}
+.pagination a i {
+    font-size: 12px; /* adjust this value as needed */
+    margin: 0 0.25rem;
+}

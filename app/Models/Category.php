@@ -13,4 +13,12 @@ class Category extends Model
     {
         return $this->hasMany(Post::class);
     }
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
+    public function tests()
+    {
+        return $this->hasMany(Test::class);
+    }
 }

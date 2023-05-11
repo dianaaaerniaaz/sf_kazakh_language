@@ -13,7 +13,8 @@
     <link rel="shortcut icon" type="image/x-icon" href={{asset("app/img/favicon.png")}}>
     <!-- Place favicon.ico in the root directory -->
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
+    <!-- Scripts -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <!-- CSS here -->
     <link rel="stylesheet" href={{asset("app/css/bootstrap.min.css")}}>
     <link rel="stylesheet" href={{asset("app/css/owl.carousel.min.css")}}>
@@ -88,7 +89,7 @@
                                                                 </a>
 
                                                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                                                    <a class="dropdown-item" href="{{ route('logout') }}" style="height: 10px;"
                                                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                                                         {{ __('Logout') }}
@@ -270,8 +271,8 @@
 <script src={{asset("app/js/jquery.form.js")}}></script>
 <script src={{asset("app/js/jquery.validate.min.js")}}></script>
 <script src={{asset("app/js/mail-script.js")}}></script>
-
 <script src={{asset("app/js/main.js")}}></script>
+
 
 </body>
 

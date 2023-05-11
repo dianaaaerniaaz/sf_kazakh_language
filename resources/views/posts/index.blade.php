@@ -4,7 +4,7 @@
 @section('title','Home Page')
 
 @section('content')
-
+    <link rel="stylesheet" href={{asset("app/css/style.css")}}>
     <div class="slider_area">
         <div class="slider_active owl-carousel">
             <!-- single_carouse -->
@@ -79,15 +79,15 @@
                     @foreach($posts as $post)
                         <div class="col-md-4 my-3" style="padding: 0;">
                             <div class="p-3 text-primary-emphasis bg-primary-subtle">
-                                <div class="list-group-item list-group-item-action list-group-item-primary" style="max-width: 580px;">
+                                <div class="list-group-item list-group-item-action list-group-item" style="max-width: 580px;">
                                     <h5>{{$post->title}}</h5>
-                                    <h6>{{$post->category->name}}</h6>
-                                    <a href="{{route('posts.show', $post->id)}}" class="">Подробнее</a>
+                                    <h6>{{$post->category->name}} - <a href="{{route('posts.show', $post->id)}}" class="">Подробнее</a></h6>
                                 </div>
                             </div>
                         </div>
                     @endforeach
                 </div>
+
             </div>
 
         </div>

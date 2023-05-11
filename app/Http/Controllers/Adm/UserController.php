@@ -20,4 +20,7 @@ class UserController extends Controller
         }
         return view('adm.users',['users'=>$users]);
     }
+    public function myProfile(){
+        return view('userProfile.profile');
+    }
 }

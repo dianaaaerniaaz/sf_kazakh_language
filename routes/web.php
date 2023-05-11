@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\DictionaryController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\Auth2\RegisterController;
@@ -23,9 +26,20 @@ Route::get('/authorize', function () {
     ]);
     return redirect($result['url']);
 });
-Route::get('/game', [GameController::class, 'index'])->name('game.index');
-Route::post('/game/guess', [GameController::class, 'guess'])->name('game.guess');
-Route::post('/game/guess-word', [GameController::class, 'guessWord'])->name('game.guess-word');
+Route::get('/questions', [QuestionController::class, 'index'])->name('questions.index');
+Route::get('/questions/create', [QuestionController::class, 'create'])->name('questions.create');
+Route::post('/questions', [QuestionController::class, 'store'])->name('questions.store');
+Route::get('/tests/create', [TestController::class, 'create'])->name('tests.create');
+Route::post('/tests', [TestController::class, 'store'])->name('tests.store');
+Route::get('/tests/result/{score}/{total}', [TestController::class, 'result'])->name('tests.result');
+
+Route::get('/dictionary', [DictionaryController::class, 'index']);
+Route::get('games', [GameController::class, 'index'])->name('games.index');
+Route::post('games/{game}', [GameController::class, 'check'])->name('games.check');
+//Route::get('/game', [GameController::class, 'index'])->name('game.index');
+Route::get('/profile', [UserController::class, 'myProfile'])->name('profile.index');
+//Route::post('/game/guess', [GameController::class, 'guess'])->name('game.guess');
+//Route::post('/game/guess-word', [GameController::class, 'guessWord'])->name('game.guess-word');
 Route::prefix('adm')->as('adm.')->middleware('hasRole:admin')->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::get('/users/search', [UserController::class, 'index'])->name('users.search');
