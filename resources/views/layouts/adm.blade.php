@@ -84,7 +84,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Utilities:</h6>
                     <a class="collapse-item" href={{route('adm.users.index')}}>Categories</a>
-                    <a class="collapse-item" href="utilities-border.html">Borders</a>
+                    <a class="collapse-item" href={{route('questions.index')}}>Questions</a>
                 </div>
             </div>
         </li>

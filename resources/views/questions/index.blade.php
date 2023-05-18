@@ -1,12 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.adm')
 
 @section('title', 'Список вопросов')
 
 @section('content')
-    <h1>Список вопросов</h1>
-    <ul>
+    <h1 class="text-center"> Список вопросов</h1><hr>
+    <ul >
         @foreach ($questions as $question)
-            <li>{{ $question->question_text }}</li>
+            <li class="text-center">{{ $question->question_text }}</li><hr>
         @endforeach
     </ul>
 @endsection

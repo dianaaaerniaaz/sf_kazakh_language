@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
     public function postByCategory(Category $category){
+        //$category->posts = Post::paginate(1);
         return view('posts.index', ['posts'=>$category->posts,'categories'=>Category::all()]);
     }
     public function like(Request $request, Post $post)
@@ -31,9 +32,9 @@ class PostController extends Controller
 
     public function index()
     {
-        $allPosts =  Post::all();
-        return view('posts.index', ['posts'=>$allPosts,'categories'=>Category::all()]);
-
+        $posts = Post::all();
+        $categories = Category::all();
+        return view('posts.index', compact('posts', 'categories'));
     }
     public function create(){
         $this->authorize('create', Post::class);
@@ -90,6 +91,7 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
+        $this->authorize('update',$post);
         return view('posts.edit', ['post' => $post,'categories'=>Category::all()]);
     }
 
@@ -109,6 +111,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $this->authorize('delete',$post);
+        $post->usersLike()->detach();
         $post->delete();
         return redirect()->route('posts.index');
     }

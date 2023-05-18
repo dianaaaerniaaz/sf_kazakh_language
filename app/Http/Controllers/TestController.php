@@ -20,11 +20,14 @@ class TestController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+    public function questionByCategory(Category $category){
+        return view('tests.create', ['questions'=>$category->questions,'categories'=>Category::all()]);
+    }
     public function create()
     {
         $categories = Category::all();
-        $questions = Question::all(); // добавьте эту строку
-        return view('tests.create', ['categories' => $categories, 'questions' => $questions]); // передайте переменную в представление
+        $questions = Question::all();
+        return view('tests.create',compact('questions', 'categories')); // передайте переменную в представление
     }
 
     /**

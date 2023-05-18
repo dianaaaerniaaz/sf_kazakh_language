@@ -1,5 +1,4 @@
 @extends('layouts.app')
-{{--<link rel="stylesheet" href="app.css">--}}
 
 @section('title','Game Page')
 
@@ -15,17 +14,23 @@
             {{ session('error') }}
         </div>
     @endif
-    <h1>Угадай слово</h1>
-    <h5><i>*ВАЖНО!!!* Пишите ответы заглавными буквами!</i></h5>
 
-    <p>Перемешанные буквы: {{ $game->mixed_letters }}</p>
+    <h1 class="text-center my-5" style="background: PowderBlue;max-width: 500px; margin: 0 auto; "><b style="color: #0b0b0b">Угадай слово</b></h1>
+    <h5 class="text-center my-5"><i>*ВАЖНО!!!* Пишите ответы заглавными буквами!</i></h5>
+    <h3 class="text-center my-5">Перемешанные буквы: {{ $game->mixed_letters }}</h3>
 
-    <form method="POST" action="{{ route('games.check', $game) }}">
+    <form class="mx-auto text-center" method="POST"  action="{{ route('games.check', $game) }}" >
         @csrf
-        <label for="answer">Ответ:</label>
-        <input type="text" name="answer">
-        <button type="submit">Проверить</button>
+        <label  for="answer"  >Ответ:</label>
+        <input type="text" name="answer" class="form-control" style="max-width: 300px; margin: 0 auto;box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); border-color: #ccc;">
+        <button type="submit" class="btn btn-primary mt-3">Проверить</button>
     </form>
+@endsection
 
-
+@section('styles')
+    <style>
+        body {
+            background-color: #f2f2f2;
+        }
+    </style>
 @endsection

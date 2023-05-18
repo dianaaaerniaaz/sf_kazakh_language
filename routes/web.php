@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DictionaryController;
+use App\Http\Controllers\LangController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
@@ -16,28 +17,27 @@ Route::get('/posts/category/{category}',[PostController::class,'postByCategory']
 Route::get('/',function (){
     return redirect()->route('posts.index');
 });
-Route::get('/authorize', function () {
-    $eds = new \Unetway\LaravelEdsign\LaravelEdsign();
-    $result = $eds->authorize([
-        'document' => 'path/to/document.pdf',
-        'callback_url' => 'https://yourapp.com/callback',
-        'user_id' => '123',
-        'user_email' => 'user@example.com',
-    ]);
-    return redirect($result['url']);
-});
+Route::get('lang/{lang}', [LangController::class, 'switchLang'])->name('switch.lang');
+
 Route::get('/questions', [QuestionController::class, 'index'])->name('questions.index');
 Route::get('/questions/create', [QuestionController::class, 'create'])->name('questions.create');
 Route::post('/questions', [QuestionController::class, 'store'])->name('questions.store');
-Route::get('/tests/create', [TestController::class, 'create'])->name('tests.create');
+Route::get('/tests/category/{category}',[TestController::class,'questionByCategory'])->name('questions.category');
+
+Route::get('/tests/create/', [TestController::class, 'create'])->name('tests.create');
 Route::post('/tests', [TestController::class, 'store'])->name('tests.store');
 Route::get('/tests/result/{score}/{total}', [TestController::class, 'result'])->name('tests.result');
-
-Route::get('/dictionary', [DictionaryController::class, 'index']);
+Route::delete('/dictionary/{word}', [DictionaryController::class, 'destroy'])->name('dictionary.destroy');
+Route::get('/dictionary/create', [DictionaryController::class, 'create'])->name('dictionary.create');
+Route::post('/dictionary', [DictionaryController::class, 'store'])->name('dictionary.store');
+Route::get('/dictionary', [DictionaryController::class, 'index'])->name('dictionary.index');
 Route::get('games', [GameController::class, 'index'])->name('games.index');
 Route::post('games/{game}', [GameController::class, 'check'])->name('games.check');
 //Route::get('/game', [GameController::class, 'index'])->name('game.index');
-Route::get('/profile', [UserController::class, 'myProfile'])->name('profile.index');
+Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'index'])->name('profile.index');
+Route::get('/profile/{user}/edit', [\App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
+Route::put('/profile/{user}', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+
 //Route::post('/game/guess', [GameController::class, 'guess'])->name('game.guess');
 //Route::post('/game/guess-word', [GameController::class, 'guessWord'])->name('game.guess-word');
 Route::prefix('adm')->as('adm.')->middleware('hasRole:admin')->group(function () {

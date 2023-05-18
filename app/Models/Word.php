@@ -12,5 +12,6 @@ class Word extends Model
         'word',
         'transcription',
         'translation',
+        'img'
     ];
 }

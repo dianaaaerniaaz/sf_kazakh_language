@@ -54,7 +54,8 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                @can('create',\App\Models\Post::class)
-                    <a class="btn btn-outline-primary" href="{{ route('posts.create') }}">Go to create page</a><br><br>
+                    <a class="btn btn-outline-primary" href="{{ route('posts.create') }}">Go to create post</a>
+                    <a class="btn btn-outline-primary" href="{{ route('questions.create') }}">Go to create test</a><br><br>
                @endcan
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
@@ -80,7 +81,7 @@
                         <div class="col-md-4 my-3" style="padding: 0;">
                             <div class="p-3 text-primary-emphasis bg-primary-subtle">
                                 <div class="list-group-item list-group-item-action list-group-item" style="max-width: 580px;">
-                                    <h5>{{$post->title}}</h5>
+                                    <h5>{{ $post->{'title_'.app()->getLocale()} }}</h5>
                                     <h6>{{$post->category->name}} - <a href="{{route('posts.show', $post->id)}}" class="">Подробнее</a></h6>
                                 </div>
                             </div>
@@ -88,31 +89,11 @@
                     @endforeach
                 </div>
 
+
             </div>
 
         </div>
 
-
-               {{--}} @foreach($posts as $post)
-                    <div class="card">
-                        {{--<img class="card-img-top" src="..." alt="Card image cap">--
-
-                        <div class="card-body">
-                            <h5 class="card-title">{{$post->title }}</h5>
-                            <p class="card-text">{{$post->content}}</p>
-                            <a href="{{route('posts.show',$post->id)}}" class="btn btn-outline-primary">Read more</a>
-                            <form action="{{route('posts.show',$post->id)}}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-outline-danger" type="submit">Delete</button>
-
-                            </form>
-                        </div>
-                    </div>
-                @endforeach-
-            </div>
-        </div>
-    </div>--}}
     <div class="card">
         <div class="tools">
             <div class="circle">

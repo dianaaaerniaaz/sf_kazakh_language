@@ -24,7 +24,7 @@ class PostPolicy
     }
     public function update(User $user, Post $post): bool
     {
-        //
+        return  ($user->role->name != 'user');
     }
     public function delete(User $user, Post $post): bool
     {

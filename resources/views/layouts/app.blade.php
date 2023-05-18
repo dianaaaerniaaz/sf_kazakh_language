@@ -3,9 +3,12 @@
 <html class="no-js" lang="zxx">
 
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Education</title>
+
+
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,7 +18,9 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
     <!-- CSS here -->
+
     <link rel="stylesheet" href={{asset("app/css/bootstrap.min.css")}}>
     <link rel="stylesheet" href={{asset("app/css/owl.carousel.min.css")}}>
     <link rel="stylesheet" href={{asset("app/css/magnific-popup.css")}}>
@@ -27,7 +32,7 @@
     <link rel="stylesheet" href={{asset("app/css/animate.css")}}>
     <link rel="stylesheet" href={{asset("app/css/slicknav.css")}}>
     <link rel="stylesheet" href={{asset("app/css/style.css")}}>
-    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+
 </head>
 
 <body>
@@ -55,23 +60,26 @@
                                     <nav>
                                         <ul id="navigation">
 
-                                            <li><a  href="posts.index">home</a></li>
+
 
 
                                                         <!-- Authentication Links -->
                                                         @guest
                                                             @if (Route::has('login'))
                                                                 <li class="nav-item">
-                                                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                                                    <a class="nav-link" href="{{ route('login') }}">{{ __('messages.login') }}</a>
                                                                 </li>
                                                             @endif
 
                                                             @if (Route::has('register'))
                                                                 <li class="nav-item">
-                                                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                                                    <a class="nav-link" href="{{ route('register') }}">{{ __('messages.register') }}</a>
                                                                 </li>
                                                             @endif
                                                         @else
+                                                            <a href="{{route('dictionary.index')}}"><strong style="color: #0b0b0b;margin-left: 30px;margin-right: 30px">Dictionary</strong></a>
+                                                            <a href="{{route('games.index')}}"><strong style="color: #0b0b0b"> Игра</strong></a>
+                                                                <a href="{{route('tests.create')}}"><strong style="color: #0b0b0b;margin-left: 30px;margin-right: 30px">Проити тест</strong> </a>
                                                             @if(Auth::user()->role->name == 'admin')
 
                                                                 <li class="nav-item">
@@ -83,16 +91,20 @@
                                                                     <a class="nav-link" href="{{ route('adm.categories.index') }}">Moderator page</a>
                                                                 </li>
                                                             @endif
+                                                <img src="{{asset(Auth::user()->img)}}" width="45px" style="border-radius: 50%;margin-left: 10px">
                                                             <li class="nav-item dropdown">
                                                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                                     {{ Auth::user()->name }}
                                                                 </a>
 
-                                                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                                                    <a class="dropdown-item" href="{{ route('logout') }}" style="height: 10px;"
+                                                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" >
+                                                                    <a class="dropdown-item" href="{{ route('logout') }}"
                                                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                     document.getElementById('logout-form').submit();" >
                                                                         {{ __('Logout') }}
+                                                                    </a>
+                                                                    <a class="dropdown-item" href="{{ route('profile.index') }}" >
+                                                                        {{ __('My Profile') }}
                                                                     </a>
 
                                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -101,8 +113,21 @@
                                                                 </div>
                                                             </li>
                                                         @endguest
-                                                    </ul>
+                                            <li class="nav-item dropdown">
+                                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                    {{ config('app.languages')[app()->getLocale()] }}
+                                                </a>
+
+                                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" >
+                                                    @foreach(config('app.languages') as $ln => $lang)
+                                                        <a class="dropdown-item" href="{{route('switch.lang', $ln)}}" >
+                                                            {{$lang}}
+                                                        </a>
+                                                    @endforeach
                                                 </div>
+                                            </li>
+                                                    </ul>
+
 
                                         </ul>
                                     </nav>
@@ -147,7 +172,7 @@
 </main>
 </div>
 
-<footer class="footer">
+<footer class="footer" style="padding: 20px 0;">
     <div class="footer_top">
         <div class="container">
             <div class="newsLetter_wrap">
@@ -197,48 +222,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xl-3 col-md-6 col-lg-3">
-                    <div class="footer_widget">
-                        <h3 class="footer_title">
-                            About Us
-                        </h3>
-                        <ul>
-                            <li><a href="#">Online Learning</a></li>
-                            <li><a href="#">About Us</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6 col-lg-3">
-                    <div class="footer_widget">
-                        <h3 class="footer_title">
-                            Campus
-                        </h3>
-                        <ul>
-                            <li><a href="#">Our Plans</a></li>
-                            <li><a href="#">Free Trial</a></li>
-                        </ul>
-                    </div>
-                </div>
 
 
-            </div>
-        </div>
-    </div>
-    <div class="copy-right_text">
-        <div class="container">
-            <div class="footer_border"></div>
-            <div class="row">
-                <div class="col-xl-12">
-                    <p class="copy_right text-center">
-                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
 </footer>
 <!-- footer end  -->
 
