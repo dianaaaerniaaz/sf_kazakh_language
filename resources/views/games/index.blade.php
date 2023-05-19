@@ -15,15 +15,15 @@
         </div>
     @endif
 
-    <h1 class="text-center my-5" style="background: PowderBlue;max-width: 500px; margin: 0 auto; "><b style="color: #0b0b0b">Угадай слово</b></h1>
-    <h5 class="text-center my-5"><i>*ВАЖНО!!!* Пишите ответы заглавными буквами!</i></h5>
-    <h3 class="text-center my-5">Перемешанные буквы: {{ $game->mixed_letters }}</h3>
+    <h1 class="text-center my-5" style="background: PowderBlue;max-width: 500px; margin: 0 auto; "><b style="color: #0b0b0b">{{ __('messages.guess') }}</b></h1>
+    <h5 class="text-center my-5"><i>{{ __('messages.imp') }}</i></h5>
+    <h3 class="text-center my-5">{{ __('messages.mix') }}: {{ $game->mixed_letters }}</h3>
 
     <form class="mx-auto text-center" method="POST"  action="{{ route('games.check', $game) }}" >
         @csrf
-        <label  for="answer"  >Ответ:</label>
+        <label  for="answer"  >{{ __('messages.ans') }}:</label>
         <input type="text" name="answer" class="form-control" style="max-width: 300px; margin: 0 auto;box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); border-color: #ccc;">
-        <button type="submit" class="btn btn-primary mt-3">Проверить</button>
+        <button type="submit" class="btn btn-primary mt-3">{{ __('messages.check') }}</button>
     </form>
 @endsection
 

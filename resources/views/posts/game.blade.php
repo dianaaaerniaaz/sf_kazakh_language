@@ -9,7 +9,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Guess the Word') }} </div>
+                    <div class="card-header">{{ __('messages.guess') }} </div>
 
 
                     <div class="card-body">

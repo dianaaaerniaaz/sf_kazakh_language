@@ -9,11 +9,11 @@
             <div class="col-12">
                 <dl class="row fs-4">
 
-                    <dt class="col-sm-3"><b>Name:</b></dt>
+                    <dt class="col-sm-3"><b>{{ __('messages.Title') }}:</b></dt>
                     <dd class="col-sm-9" style="color: #0b0b0b"><h1><b style="color: #0b0b0b">{{ $post->{'title_'.app()->getLocale()} }}</b></h1></dd><hr>
                     <iframe width="350" height="455" src="{{asset($post->img)}}" title="img" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-                    <dt class="col-sm-3"><b>Content:</b></dt>
+                    <dt class="col-sm-3"><b>{{ __('messages.Content') }}:</b></dt>
                     <dd class="col-sm-9">{{ $post->{'content_'.app()->getLocale()} }}</dd><hr>
 
                     <div class="col d-md-flex justify-content-center">
@@ -24,7 +24,7 @@
                                 <form action="{{route('posts.like',$post->id)}}" method="post">
                                     @csrf
                                     <input type="hidden" name="like" value="false">
-                                    <b>Delete to the list:</b>
+                                    <b>{{ __('messages.ReRead') }}</b>
                                     <button class="btn btn-secondary-soft">
 
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard2-check-fill" viewBox="0 0 16 16">
@@ -37,7 +37,7 @@
                                 <form action="{{route('posts.like',$post->id)}}" method="post">
                                     @csrf
                                     <input type="hidden" name="like" value="true">
-                                    {{__('add to the list')}}
+                                    {{ __('messages.Read') }}
                                     <button class="btn btn-secondary-soft">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard2-check" viewBox="0 0 16 16">
                                             <path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5h3Z"/>
@@ -52,78 +52,19 @@
                            <hr>
                     @can('update',$post)
                             <a href="{{route('posts.edit', $post->id)}}" class="btn btn-outline-success mt-4"
-                               style="letter-spacing: 2px">EDIT DESCRIPTION</a><br><br>
+                               style="letter-spacing: 2px">{{ __('messages.edit') }}</a><br><br>
                     @endcan
                      @can('delete',$post)
                         <form action="{{route('posts.destroy',$post->id)}}" method="post">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-outline-danger mt-4" style="letter-spacing: 2px;position: relative;left: 50%;transform: translate(-50%, 0);" >Delete</button>
+                            <button class="btn btn-outline-danger mt-4" style="letter-spacing: 2px;position: relative;left: 50%;transform: translate(-50%, 0);" >{{ __('messages.delete') }}</button>
                         </form>
                     @endcan
                 </dl>
             </div>
         </div>
-        {{--}}<div class="col d-md-flex justify-content-center">
-            @can('update',$clothes)
-                <a href="{{route('clothes.edit', $clothes->id)}}" class="btn btn-outline-success mt-4"
-                   style="letter-spacing: 2px">EDIT DESCRIPTION THIS CLOTHING</a><br><br>
-            @endcan
-        </div>--}}
-        {{--@if (auth()->check())
-            @if (auth()->user()->role == ('admin'))
-                <form action="{{route('clothes.destroy',$clothes->id)}}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-outline-danger mt-4" style="letter-spacing: 2px;position: relative;left: 50%;transform: translate(-50%, 0);" >Delete</button>
-                </form>
-            @elseif (auth()->user()->role == ('moderator'))
-                <form action="{{route('clothes.destroy',$clothes->id)}}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-outline-danger mt-4" style="letter-spacing: 2px;position: relative;left: 50%;transform: translate(-50%, 0);" >Delete</button>
-                </form>
-            @endif
-        @endif
---}}
-
-
-
-       {{--}} @can('delete',$clothes)
-            <form action="{{route('clothes.destroy',$clothes->id)}}" method="post">
-                @csrf
-                @method('DELETE')
-                <button class="btn btn-outline-danger mt-4" style="letter-spacing: 2px;position: relative;left: 50%;transform: translate(-50%, 0);" >Delete</button>
-            </form>
-        @endcan--}}
-
-
-            {{--<form action="{{route('clothes.uncart',$clothes->id)}}" method="post">
-                @csrf
-                <button class="btn btn-outline-info" style="letter-spacing: 2px;position: relative;left: 50%;transform: translate(-50%, 0);">Delete from cart</button><hr>
-            </form>--}}
-
 
 
     </div>
 @endsection
-
-{{--}}<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>All products</title>
-
-</head>
-<body>
-<h3>{{$post->title}}</h3>
-<p>{{$post->content}}</p>
-
-<a href="{{route('posts.edit',$post->id)}}">Edit</a>
-
-
-</body>
-</html>
---}}

@@ -77,9 +77,9 @@
                                                                 </li>
                                                             @endif
                                                         @else
-                                                            <a href="{{route('dictionary.index')}}"><strong style="color: #0b0b0b;margin-left: 30px;margin-right: 30px">Dictionary</strong></a>
-                                                            <a href="{{route('games.index')}}"><strong style="color: #0b0b0b"> Игра</strong></a>
-                                                                <a href="{{route('tests.create')}}"><strong style="color: #0b0b0b;margin-left: 30px;margin-right: 30px">Проити тест</strong> </a>
+                                                            <a href="{{route('dictionary.index')}}"><strong style="color: #0b0b0b;margin-left: 30px;margin-right: 30px">{{ __('messages.Dictionary') }}</strong></a>
+                                                            <a href="{{route('games.index')}}"><strong style="color: #0b0b0b">{{ __('messages.game') }}</strong></a>
+                                                                <a href="{{route('tests.create')}}"><strong style="color: #0b0b0b;margin-left: 30px;margin-right: 30px">{{ __('messages.test') }}</strong> </a>
                                                             @if(Auth::user()->role->name == 'admin')
 
                                                                 <li class="nav-item">
@@ -101,10 +101,10 @@
                                                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();" >
-                                                                        {{ __('Logout') }}
+                                                                        {{ __('messages.logout') }}
                                                                     </a>
                                                                     <a class="dropdown-item" href="{{ route('profile.index') }}" >
-                                                                        {{ __('My Profile') }}
+                                                                        {{ __('messages.profile') }}
                                                                     </a>
 
                                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

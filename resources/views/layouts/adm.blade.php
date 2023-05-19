@@ -68,6 +68,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item active" href="b{{route('adm.users.index')}}">Users List</a>
                     <a class="collapse-item" href="{{route('posts.index')}}">Home</a>
+                    <a class="collapse-item" href="{{route('dictionary.create')}}">Dictionary</a>
                 </div>
             </div>
         </li>

@@ -3,7 +3,7 @@
 @section('title', 'Пройти тест')
 
 @section('content')
-    <h1 class="text-center">Пройти тест</h1>
+    <h1 class="text-center">{{ __('messages.test') }}</h1>
 
     <form action="{{ route('tests.store') }}" method="POST" class="text-center">
         @csrf

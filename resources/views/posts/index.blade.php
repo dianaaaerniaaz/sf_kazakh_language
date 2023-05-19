@@ -54,8 +54,8 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                @can('create',\App\Models\Post::class)
-                    <a class="btn btn-outline-primary" href="{{ route('posts.create') }}">Go to create post</a>
-                    <a class="btn btn-outline-primary" href="{{ route('questions.create') }}">Go to create test</a><br><br>
+                    <a class="btn btn-outline-primary" href="{{ route('posts.create') }}">{{ __('messages.GotoPost') }}</a>
+                    <a class="btn btn-outline-primary" href="{{ route('questions.create') }}">{{ __('messages.GotoTest') }}</a><br><br>
                @endcan
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
@@ -81,8 +81,12 @@
                         <div class="col-md-4 my-3" style="padding: 0;">
                             <div class="p-3 text-primary-emphasis bg-primary-subtle">
                                 <div class="list-group-item list-group-item-action list-group-item" style="max-width: 580px;">
+                                    <div class="card-body" >
+                                        <img src="{{asset($post->img)}}" width="250px">
+                                        <hr>
+                                       </div>
                                     <h5>{{ $post->{'title_'.app()->getLocale()} }}</h5>
-                                    <h6>{{$post->category->name}} - <a href="{{route('posts.show', $post->id)}}" class="">Подробнее</a></h6>
+                                    <h6>{{$post->category->name}} - <a href="{{route('posts.show', $post->id)}}" class="">{{ __('messages.read') }}</a></h6>
                                 </div>
                             </div>
                         </div>
